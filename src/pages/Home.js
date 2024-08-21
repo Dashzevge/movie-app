@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMovies, getAllGenres } from '../services/movieApi';
-import { Movies } from '../compenents/Movies';
-import { SearchFilter } from '../compenents/SearchFilter';
-import { Pagination } from '../compenents/Pagination';
+import { Movies } from '../components/Movies';
+import { SearchFilter } from '../components/SearchFilter';
+import { Pagination } from '../components/Pagination';
 import { setMovies } from '../redux/slices/moviesSlice';
 import { setGenres } from '../redux/slices/genresSlice';
 import { setPage, setPageSize, setTotalPages } from '../redux/slices/paginationSlice';

@@ -1,2 +1,2 @@
 (this.webpackJsonpmoviesearch=this.webpackJsonpmoviesearch||[]).push([[5],{45:function(e,t,a){"use strict";a.r(t);var n=a(0),s=a.n(n),o=a(17);t.default=()=>s.a.createElement("div",{className:"container text-center"},s.a.createElement("h1",null,"404"),s.a.createElement("p",null,"Oops! The page you're looking for doesn't exist."),s.a.createElement(o.b,{to:"/",className:"btn btn-primary"},"Go Home"))}}]);
-//# sourceMappingURL=5.360474b6.chunk.js.map
+//# sourceMappingURL=5.56bfbf0a.chunk.js.map

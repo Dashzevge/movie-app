@@ -8,6 +8,7 @@ const MovieDetail = lazy(() => import('./pages/MovieDetail.js'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
+  console.log("working");
   return (
     <Router basename={BASE_NAME}>
     <Suspense fallback={<Loading />}>

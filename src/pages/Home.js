@@ -5,18 +5,18 @@ import { Movies } from '../components/Movies';
 import { SearchFilter } from '../components/SearchFilter';
 import { Pagination } from '../components/Pagination';
 import { setMovies } from '../redux/slices/moviesSlice';
-import { setGenres } from '../redux/slices/genresSlice';
-import { setPage, setPageSize, setTotalPages } from '../redux/slices/paginationSlice';
-import { setSearchTerm, setSelectedGenre } from '../redux/slices/searchSlice';
+import { setGenres } from '../redux/slices/movieFilterSlice'; 
+import { setPage, setPageSize, setTotalPages } from '../redux/slices/movieFilterSlice';
+import { setSearchTerm, setSelectedGenre } from '../redux/slices/movieFilterSlice'; 
 import { API_ENDPOINTS } from '../constants';
 import { useDebounce } from 'use-debounce';
 
 export const Home = () => {
     const dispatch = useDispatch();
-    const movies = useSelector((state) => state.movies);
-    const genres = useSelector((state) => state.genres);
-    const { currentPage, pageSize, totalPages } = useSelector((state) => state.pagination);
-    const { searchTerm, selectedGenre } = useSelector((state) => state.search);
+    const movies = useSelector((state) => state.movies); 
+    const genres = useSelector((state) => state.movieFilters.genres);
+    const { currentPage, pageSize, totalPages } = useSelector((state) => state.movieFilters);
+    const { searchTerm, selectedGenre } = useSelector((state) => state.movieFilters);
     const [debouncedSearchTerm] = useDebounce(searchTerm, 100); 
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export const Home = () => {
                 dispatch(setMovies(response.data));
                 dispatch(setTotalPages(response.totalPages));
             } catch (error) {
-                console.error('Failed to getAllmovies', error);
+                console.error('Failed to getAllMovies', error);
             }
         };
 

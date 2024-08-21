@@ -5,11 +5,9 @@ import { Movies } from '../components/Movies';
 import { SearchFilter } from '../components/SearchFilter';
 import { Pagination } from '../components/Pagination';
 import { setMovies } from '../redux/slices/moviesSlice';
-import { setGenres } from '../redux/slices/movieFilterSlice'; 
-import { setPage, setPageSize, setTotalPages } from '../redux/slices/movieFilterSlice';
-import { setSearchTerm, setSelectedGenre } from '../redux/slices/movieFilterSlice'; 
+import { setGenres, setPage, setPageSize, setTotalPages, setSearchTerm, setSelectedGenre } from '../redux/slices/movieFilterSlice'; 
 import { API_ENDPOINTS } from '../constants';
-import { useDebounce } from 'use-debounce';
+//import { useDebounce } from 'use-debounce';
 
 export const Home = () => {
     const dispatch = useDispatch();
@@ -17,12 +15,12 @@ export const Home = () => {
     const genres = useSelector((state) => state.movieFilters.genres);
     const { currentPage, pageSize, totalPages } = useSelector((state) => state.movieFilters);
     const { searchTerm, selectedGenre } = useSelector((state) => state.movieFilters);
-    const [debouncedSearchTerm] = useDebounce(searchTerm, 100); 
+    //const [debouncedSearchTerm] = useDebounce(searchTerm, 500); 
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await getAllMovies(API_ENDPOINTS.MOVIES, currentPage, pageSize, debouncedSearchTerm, selectedGenre);
+                const response = await getAllMovies(API_ENDPOINTS.MOVIES, currentPage, pageSize, searchTerm, selectedGenre);
                 dispatch(setMovies(response.data));
                 dispatch(setTotalPages(response.totalPages));
             } catch (error) {
@@ -31,7 +29,7 @@ export const Home = () => {
         };
 
         fetchMovies();
-    }, [currentPage, pageSize, debouncedSearchTerm, selectedGenre, dispatch]);
+    }, [currentPage, pageSize, searchTerm, selectedGenre, dispatch]);
 
     useEffect(() => {
         const fetchAllGenres = async () => {

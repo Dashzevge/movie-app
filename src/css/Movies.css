@@ -1,0 +1,11 @@
+/* Movies.css */
+#buttonGroup {
+   margin: 20px;
+}
+.card {
+    margin-top: 10px;
+    border: 5px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+}
